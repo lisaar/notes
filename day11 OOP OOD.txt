@@ -1,0 +1,22 @@
+OOD & OOP
+
+class Test     #Prepare a class
+	
+end
+
+test = Test.new   #use it later on like this
+
+class Person
+
+end
+
+sam = Person.new
+
+object is an instance of a class
+	class --> can't exist but is an overarching concept
+				provides a blueprint of what it takes to be in this class
+				a machine that will create things
+	object --> an instance of a class, it exists 
+				define the blueprint for each instance (object)
+				
+

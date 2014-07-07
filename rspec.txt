@@ -1,0 +1,172 @@
+Cucumber
+	Feature narrative
+	Scenario
+		Given, when, then principle to document unexplored scenarios
+
+
+RSpec
+	domain spicific language for specifying the behaviour of objects
+	uses expectations: an expression of how the subject code is expected to behave
+		state-based expectations
+		interactive expectations
+	Example group
+		group of code examples (test cases) that comprise a feature
+	Code examples
+		example of how subject code can be used
+		how subject code will behave in a specific context
+		become regression tests once code is written
+
+
+Code example groups - call example() method
+	describe() #method to define an example group
+		use with a block holding the code examples
+		RSPEC::Core:ExampleGroup:NewGroupName
+		can take string or class as its argument
+			Using a class wraps the new example group in that module
+			2nd argument should always be a string 
+	context()
+		same as describe()
+		often used under an existing describe() module
+
+Code example
+	it() #method to define a code example
+	passes a string as the argument to define behaviour we want to probe
+	has a block to hold the example code
+		exercises the subject code
+		sets expectatiosn about the subject code's behaviour
+	use pending before the arugment to mark an example as pending
+		a pending example that is correct will return PendingExampleFixedError
+
+Hooks - declare code to be run to set an enviornment state
+	before() #method can pass a block to set conditions
+		before(:each)
+		before(:all)
+	after() #method not usually necessary 
+		after(:each)
+		after(:all)
+		can be useful to set aside a global state as an intermediary variable and then restore it later
+	around(:each) 
+		often safer to use specific before() and after()
+		use a block 
+			around do |example|
+				begin
+					do_some_stuff_before
+						example.run
+					ensure
+						do_some_stuff_after
+					end
+				end
+Helper methods
+	alternative to hooks to help define a certain environment for an example
+		def helper_method
+		end
+	include the name of the helper method's module in the describe()
+		this allows you to share a helper method between example groups
+	sahred_examples_for()
+		creates a nested example group that also includes any hooks passed in as a block
+		share example with 
+			it_behaves_like "string containing shared example name"
+
+Nesting example groups
+	Any helper methods or hooks are avaiable to the inner nested classes
+	New conditions set up will take precedend over more peripheral ones
+
+
+RSPEC::Expectations  #library
+	RSpec has built in expectations (methods)
+	Can exploit ruby's open class system to add methods to every object in the system
+
+.should() .should_not()
+	result.should equal(5)
+		syntactic sugar for -> actual.should == expected
+	result.should_not equal(5)
+		syntactic sugar for -> actual.should_not == expected
+
+Matcher
+	tried to match objects it recieves against expected outcomes
+	1. evaluates 5 and produces an object that is a matcher for the value 5
+	2. matcher is sent as an argument to .should()
+	3. .should() calls matcher.matches?(self)
+		the matcher is the one generated in 1
+		self is the object that .should() was acting on e.g. result
+	4. if matches?(self) returns true then expectation is met
+		move on to next example
+	5. else returns false and should() asks matcher for a failure message
+		raises ExpecationNotMetError
+	
+	Built-in mathcers
+		equal(expected)
+		include(item)
+			prime_numbers.should_not include(8)
+		respond_to(messages)
+			list/should respond_to(:length)
+		raise_error(type)
+			{Object.new.explode!}.should raise_error(NameError)
+				#this is a lambda
+
+	Equality
+		Object equivalence (value eequality)
+			2 objects have equivalent values
+			An object should have values that match our expectations
+			a. should == b
+				(3*5).should == 15
+			a.should eql(b)
+				a.eql?(b)
+			Less likely to fail a test as test
+		Object identity (object equality)
+			a specific object is the very same object we are expressing
+			a.should === b
+				a === b
+			a.equal?(b)
+				a.should equal(b)
+			Important when caching!
+
+	be_close() matcher
+		accept an expected value and an acceptable delta
+		result.should be_close(5.25, 0.005)
+			2dp
+
+	'Golden Master' technique for reading in a text file
+		expected = File.open('filename.txt', r) do |f|
+			f.read
+		end
+		object.method.should == expected
+	result.should match (/this expression/)
+	result.should =~ /this expression/
+	
+	raise() and rescue()
+		used to express expectional circumstances with error messages
+		raise._error()
+			this matcher accepts zero, one or two arguments
+				arg one can be a class or string
+				arg two must be a string
+			checks to see if a method acting on an object will raise a certain error message
+				expect {
+					account.withdraw 75, :dollars
+				}.to raise_error(InsufficientFundsError, "attempted to withdraw 75 dollars from an account with 50 dollars")
+
+	throw() and catch()
+		express expected circumstances
+		throw_symbol() matcher accepts 0,1,2 arguments
+			like raise_error() but first argument must be a symbol second argument can be any object
+			matcher only passes if both arguments are true
+
+	Predicate matchers
+		end with ?
+		return a Boolean response
+		array.should be_empty
+			do_somethign_with(array) unless array.empty?
+			array.empty?.should == true
+			if it evaluates to true then it will raise ExpectaitonNotMetError
+			if array doesnt respond to the method empy then NoMethodError
+		be_a_method name be_an_method name
+			ruby uses syntatctic sugar
+			user.should be_an_elephant
+		Use DSL to wrtie custom matchers
+			
+
+
+
+
+
+
