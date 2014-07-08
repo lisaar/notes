@@ -1,0 +1,51 @@
+Hashes
+	dicitonary of key value pairs
+	can't gaurantee hashes will resturn data in the order you put it in
+	to pull a value out of the hash using the key
+		hashname[:key]
+			will return value
+	to look up a key based on value
+		hashname.key(value)
+		or use a dedicated method
+	can mix data types
+	access an element of an array that is a value of the key
+		hashname[:key][position in array]
+	can use flatten on a hash
+
+
+Arrays
+	Use when the order of data is important
+
+Self
+	use to return the object as opposed to the last thing evaluated
+
+.fetch -> can use within initalize definition in a class
+	method on a hash
+	@instancevariable = myhash.fetch(:keyname, "default value")
+		myhash = MyHash.new(keyname: value)
+			will override the assignment of the default value if argument given when created
+
+attr.accessor -> read and write e.g. attr_accessor :age
+attr.reader -> read only e.g .attr_reader name
+attr.writer ->write only e.g. attr_writer :age
+
+
+	class Person
+		attr_reader :name, :age
+		def initalize(name, age)
+			@name = name
+			@age = age
+		end
+
+		def name
+			@name
+		end
+
+		def age  #gives attr.reader
+			@age
+		end
+
+		def age = (new_age)  #gives attr.writer
+			@age = new_age
+		end
+	end

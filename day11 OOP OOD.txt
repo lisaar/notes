@@ -1,4 +1,8 @@
 OOD & OOP
+	Object oriented programming
+	Object oriented design
+
+Ruby: Important for building the functionality in the middle that supports the end user experience
 
 class Test     #Prepare a class
 	
@@ -13,10 +17,55 @@ end
 sam = Person.new
 
 object is an instance of a class
-	class --> can't exist but is an overarching concept
+	class -> can't exist but is an overarching concept
 				provides a blueprint of what it takes to be in this class
 				a machine that will create things
-	object --> an instance of a class, it exists 
+				there is a method .initialize will gets called when .new is called. This creates an instance of the new object with a unique ID number.
+	object -> an instance of a class, it exists 
 				define the blueprint for each instance (object)
-				
+				.new method instantiates different instances of the same object. they have the same properties but are different objects.
+
+Uses class to DRY code
+	procedural programming 
+		uniform sequence of programming
+		surcepeded by producedural programming where you can extract things out and reuses them -> 1950s
+			pull out similar chunks into a method
+		Developed idea into a collection of methods -> a mixin or module
+			can reuse this mixin or define it as a class
+		Genetic programming
+
+Building a domain module
+	Important for building applications or websites for a customer!
+	Design to spec
+
+CRC - Class Responsibility Collaborator -> DOMAIN MODEL
+	Generate a set of cards for each class to create your domain model
+		each class helps make up your domain
+	Use CRC cards to help define classes for a given domain model e.g. superhero
+		Super powers with side kicks that help us and secret identities and fight villans and outfits and a catchphrase
+			Nous: superpowers, sidekicks, catchphrase, villans, secret identities villans
+				help tease out classes and objects and collaborators
+			Verbs: help, fight
+				helps tease out interactions and methods and responsibilities
+		Responsibility and collobarators
+	Tease out an interaction map
+
+Boris Bikes
+DOMAIN
+	Bikes at stations. Bikes park in stations. People can rent bikes. Bikes can break. Vans pick up bikes. Van takes them to garage. Grage fixes bikes. Bikes are returned to empty stations. Stations are limited in capacity. You can redistribute working bikes
+
+CRC
+	BIKE
+		Responsibilities: 		Collaborators:
+			know if	working
+			be rented				london people
+			docked					station
+
+	STATION
+		Responsibilities:		Collaborators:
+			be full/not full
+			dock					bike
+
+
+
 

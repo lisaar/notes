@@ -163,7 +163,43 @@ Matcher
 			ruby uses syntatctic sugar
 			user.should be_an_elephant
 		Use DSL to wrtie custom matchers
-			
+
+CUCUMBER
+	Supports collaboration between stakeholders and the delivery team
+	Scenarios: customer acceptance tests, used to automate the system
+	1. Features - written in Gherkin
+		- Title
+		- Freeform narrative
+		- Arbitary number of scenarios (containing an arbirtary number of steps)
+	2. Cucumber command 
+		parses the steps in each scenario and tries to map them to one of the step definitions we've written in ruby
+		if it finds one it executes it
+			step definition then takes over in automating application through API
+	3. Step definitions - written in language of the sytem we're developing e.g. ruby
+
+
+Features
+	high-level requirement expressed from a system user (person or another computer)
+	Title, brief narrative, automated secnraios 
+		automated scenarios serve as acceptance criteria
+	Feature Title
+		Few words representing the activity for which user might engage system
+			[user] does [activity]
+		Keeps it simple for an inital top-down view
+	Narrative
+			“When the code-breaker submits a guess, the game displays a mark that indicates how close the guess is to the secret code.”
+		Role of user -> code-breaker
+		Action user takes -> submits guess
+		Expected response to the action -> displays mark/ VALUE PROVIDED TO BUISNESS 
+		Popular narrative template
+			As a <role> #who is using the system
+			I want <feature> #what are they doing
+			So that <buisness value> #why do they care
+		Token for conversation as exposes more questions
+		Can also use freeform narrative if you like
+
+Customer Acceptance Tests
+
 
 
 
