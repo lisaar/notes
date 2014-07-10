@@ -1,0 +1,87 @@
+Rewriting methods
+	.first
+
+inheritance and composition
+
+inheritance
+	classes below parent class inherit method and attributes of those classes
+	subclasses are more specialize versions of their parents
+	super(variable) sets what were variables in parent class to fixed values
+
+
+UML -> use to represent inheritance
+
+composition
+	van includes bike. van is using the class bike inside it
+	garage includes bikes. but its main purpose isnt to contain bikes
+	a garage and a van both have a bike container
+	something had another objectam
+	shared module among multiple classes -> use a module not a class as bike container isnt the only fundamental property
+		i.e. bike container is shared into classes van, garage
+	name spacing - ring fence methods into a module
+
+math in ruby is a module not a class
+	its not an object in its own right you just want to use its functionality
+	very broad
+	classes are very specialized
+
+rule of 3 before extracting into a module
+
+composition is preferred over inheritence every time.
+	modules are easier to identify 
+	if something goes wrong you can refer back more easily
+	method will be in bike container, uninherited
+
+attr_reader creates a method to read the attribute you initatilzied
+
+use camel case for classes e.g. DockingStation
+	docking_station.rb   for file name. use snake case! all lower case
+
+
+can't instantiate a module! makes it difficult to test!
+	use a
+		shared examples in rspec -> write a test to test something behaves like something
+
+	write a shared example spec for bike container
+		sahred_examples 'a bike container' do
+			let(:container) { described_class.new(capacity: 10)}
+			it 'has no bikes' do
+				expect(container).not_to have_bikes
+			end
+		end
+
+		describe Van do
+			it_behaves_like 'a bike'
+		
+
+
+
+to include a module in a class
+	include ModuleName
+
+
+Shared example then it behaves like to ensure code for modules inside objects is really tested
+	shared example on its own won't do anything
+	need to add it into an example for a test for the object you include it in
+
+constants are all in capitals, can't/shouldnt change them
+ HEY = 12
+
+ never change it!
+
+
+
+Error handling
+
+call .class.to_s to find out what the rror is
+
+error
+resucue keyword
+	limit scope with begin and end statement	
+
+define the ArgumentError etc. and give paramaters
+
+ensure statements give a clause to have to do something before gives error and kicks out program
+
+being, end, rescue, ensure
+

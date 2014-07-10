@@ -49,3 +49,74 @@ attr.writer ->write only e.g. attr_writer :age
 			@age = new_age
 		end
 	end
+
+lambdas catch errors but allow the rest of the program to continue its execution
+
+
+Class inheritance
+	
+	class Animal
+		def eat
+			puts "gimme some food"
+		end
+	end
+
+	class Cat < Animal
+		def miau
+			puts "miau"
+		end
+	end
+
+	class Dog < Animal
+		def bark
+			puts "ham ham"
+		end
+	end
+
+	can call .eat on dog and cat but .miau and .bark only of cat and dog respectively
+
+Only use a bang if a method changes the fundamental structural properties of an object 
+
+talks 20x20 petcha kutcha style automated
+
+After created bike object class, what is the next thing? Users of the bike...
+
+symbol exists, but is nothing specific. can use :bike but it could be anything. 
+
+
+London style - mocking way of coding, uses doubles. nothing in the way limiting speed of progress like creating objects that dont exist
+Chicago style - classicist way of coding
+make a double of bike
+	bike = double :bike     #pretend to be an instance of an object named bike,
+
+	person = Person.new(bike)
+	expect(bike).to receive(:break!)   #you now have a method break
+	person.crash						#then call crash
+
+Acceptance tests
+	test the software from the point of view of the user
+	this allows to check for the integration
+	usually start with an acceptance test going from outside to the inside
+
+
+Renting a bike
+	station = double :docking_station
+
+	person = Person.new
+	expect(station).to receive(:release_bike) 
+	person.rent_bike_from(station)
+
+
+
+station = double :station, release_bike: :bike
+#allows(station).to receive(:release_bike).and_return(:bike) -> longer
+
+	double has a method release bike and it will release the bike
+	create a double and then give a hash of methods and return values
+
+when testing interactions with different objects
+	check flow, flow is natural
+	interaction then the data
+
+
+

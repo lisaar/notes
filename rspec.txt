@@ -1,3 +1,28 @@
+Cucumber describes behaviour of applications
+RSpec describes behaviour of objects
+
+BDD CYCLE
+A. Cucumber
+	1.Focus on one scenario
+	2. Write a failing step definition
+		B. RSpec
+			3. Write a failing example
+			4. Get the excample to pass
+			5. Refactor
+			Repeat until step in 2 is passing
+	6. when step in passing go back to cucumber
+	7. refactor
+
+Directory
+	features
+		featurename.features
+		step_definitions
+			featurename_steps.rb
+	spec/featurename
+		filename_spec.rb
+	lib/featurename
+		filename.rb
+
 Cucumber
 	Feature narrative
 	Scenario
@@ -180,26 +205,387 @@ CUCUMBER
 
 Features
 	high-level requirement expressed from a system user (person or another computer)
-	Title, brief narrative, automated secnraios 
+	**Title, brief narrative, arbitrary number of automated scenraios which contain steps**
 		automated scenarios serve as acceptance criteria
-	Feature Title
-		Few words representing the activity for which user might engage system
-			[user] does [activity]
-		Keeps it simple for an inital top-down view
-	Narrative
-			“When the code-breaker submits a guess, the game displays a mark that indicates how close the guess is to the secret code.”
-		Role of user -> code-breaker
-		Action user takes -> submits guess
-		Expected response to the action -> displays mark/ VALUE PROVIDED TO BUISNESS 
-		Popular narrative template
-			As a <role> #who is using the system
-			I want <feature> #what are they doing
-			So that <buisness value> #why do they care
-		Token for conversation as exposes more questions
-		Can also use freeform narrative if you like
+	
+
+1. Feature Title
+	Few words representing the activity for which user might engage system
+		[user] does [activity]
+	Keeps it simple for an inital top-down view
+
+2. Narrative
+		“When the code-breaker submits a guess, the game displays a mark that indicates how close the guess is to the secret code.”
+	Role of user -> code-breaker
+	Action user takes -> submits guess
+	Expected response to the action -> displays mark/ VALUE PROVIDED TO BUISNESS 
+	Popular narrative template
+		As a <role> #who is using the system
+		I want <feature> #what are they doing
+		So that <buisness value> #why do they care
+	Token for conversation as exposes more questions
+	Can also use freeform narrative if you like
+
+3. Scenario
+	Scenario: text
+	Sceniario outline:
+	Scenarios (examples)
+		Given
+		When
+		Then
 
 Customer Acceptance Tests
+	Specifies how feature should behave so that developers know when its done
+	Take it one iteration at a time 
+		try to finish a story then add any new features that have emerged through dicussion
 
+Geherkin
+	Interpreter that executes code in .feature files
+	Can probide language headers (cucumber --i18n help to see available languages)
+		#language: en
+		Feature: Addition
+Grammar - key words in gherkin
+Feature 
+	every file must start with this keyword followed by : and description
+	Often have a short name followed by a brief narrative on lines below
+	Cucumber will ignore what is written here until it sees background, scenario or scenario outline
+Background
+Scenario
+Scenario Outline
+Scenarios (examples)
+	concrete examples of how we want the software to behave
+		Create a features directory and add your .features file
+	1. scenario:
+		keyword followed by :
+		name that desribes scenario in one sentence
+		first one is usually the common 'happy path' then add others later for edge cases
+	2. steps of the scenario
+		use an arbitrary no. of steps to describe everything that is happens within the scenario
+		step is a given line of text
+			often start with one of the keys words
+			Given
+			When
+			Then
+			And 
+			But
+	(3. step definition - output when we run cucumber is that we get a suggeststed step definition
+		Cucumber tells us that we need a step definition for the step of the scenario and suggests what this should be)
+
+Keywords indicating steps in scenarios - use to build up domain specific language for a project
+	Defined steps
+	Given
+		indidactes something we accept to be true in a scenario
+		probides context for the events and outcomes
+		not the same as preconditions as you can define a given that should realistically never be obtained i.e. given the world is flat
+	When
+		indicates the event in a scenario
+		usually stick to a single event in each scenario
+			makes it easier to understand the intent of each scenario
+			makes it easier to understand what goes wrong when a scenario fails
+	Then
+		indicates an expected outcome
+		its ok to have more than oneoutcome in a scenario (i.e. use And and But)
+			makes sure they are cohesive!
+	And (But)
+		synonym for the given/when/then that went before
+Gherkin formatters
+	| (defines tables)
+	""" (defines multiline strings)
+	# (for comments)
+
+
+
+Execution
+	cucumber
+		or if you want to execute a single scenario cucumber features/featurename.feature:1
+			i.e. feature number
+
+Scenario styles
+	Declerative -> fewer When steps
+		more implicit in steps, only one When. most of the maintenance work is bourne by ruby
+	Imperative -> more when steps, gives a more step by step guide putting more emphasis on the earlier secnerios
+		step by step guide. more useful if you want a plain text oriented blueprint e.g. if you have analysts who want to be able to manage the plain text scenarios, but are less experienced ruby developers
+
+Organization of features
+	Can use subfolders to organise features and do cucumber featurres/subfolder to run features in the that subdirectory and all those below
+
+Tagging
+	1. Scenarios pending approval: work with client to write a scenario with the right requirements at the correct level of abstraction
+	2. scenario is a work in progress
+		could still have other scenarios in the same feature that are pending approval
+	Regression: once a feature passes any subsequent failure is considered a regression (return to former less developed state)
+	Can use tagging to run selected subsets of features and scenarios
+		@my_tag_name
+		Type of the line before the feature or secenario keyword
+			scenarios inherit tags specified on a feature
+		cucumber --tags @my_tag_name
+			runs all secnarios with this tag
+			cucumber --tags @tag1, @tag2
+				@tag1 || @tag2
+			cucumber --tags @tag1 --tags @tag2
+				@tag1 && @tag2
+			cucumber --tags ~@tag3
+				!@tag3
+			cucumber --tags @tag1,~@tag3 --tags @tag2
+				(@tag1 || !tag3) && @tag2
+
+Step definitions
+	each consist of a regular expression a a block
+	use cucumber provided code snippets to build a step definition
+	1. create step_definitions sub directory in features
+	2. add featurename.rb
+	3. copy snippet into that file
+	when ever cucmber executes a step
+		looks for a step definition with a matching reg exp
+		if it finds one it will execute the block
+	Arguments are always passed as strings into step definitions
+		capture groups are used and are passed into the step definitions block
+			Given /^a hotel with "([^"]*)" rooms and "([^"]*)" bookings$/ do
+				|room_count, booking_count|
+			end
+
+			when the step definition's regular expression is matched with the plaintext step 
+				a hotel with "5" rooms and "0" bookings   #contains capture groups
+				it extracts the strings 5 and 0 and passes them as arguments to the block.
+
+World
+	is an object
+	every scenario runs in the context of a new instance this object 
+		World is an instance of an object that cucumber instantiates before each scenario
+		all step definitions of a scenario will execute their block in the context of this same instance
+	invoke helper methods (modules) from step definitions into World
+		customise World using World() method to make these helper methods available
+			module MyHelper
+				def some_helper
+
+				end
+
+			end
+
+			world(MyHelper)
+		Makes the helper method available from out step definitions
+	congfigure world in features/support/world.rb
+		though can be configured in any ruby file in features or one if features subdirectories
+	make World an instance of some other class by passing this class as a block to the World() method
+		class MyWorld
+			def some_helper
+			end
+		end
+
+		World do
+			MyWorld.new			#makes world an instance of the MyWorld class
+		end
+
+Calling setps within step definitions
+	define higher-level steps that encapsulate several steps in order to avoid repetition
+	call the steps from within step definitions to help keep things DRY
+		however adds layers of indirection making it more difficult to understand
+		see what works for you in terms of readability and maintainability
+
+		
+		When I select checking as the source account
+		And I select savings as the target account
+		And I set $20.00 as the amount
+		And I click transfer
+
+		to condsense the 4 steps into one
+			When I transfer $20.00 from checking to savings
+		put this in the step definition
+
+		When /I transfer (.*) from (.*) to (.*)/ do |amount, source, target|
+			steps %Q{
+				When I select #{source} as the source account
+				And I select #{target} as the target account
+				And I set #{amount} as the amount
+				And I click transfer
+			}
+		end
+
+		When /I transfer (.*) from (.*) to (.*)/ do |amount, source, target|
+			When "I select #{source} as the source account"
+			When "I select #{target} as the target account"
+			When "I set #{amount} as the amount"
+			When "I click transfer"
+		end
+
+Steps that take arguments
+	implicit -> normal sentence
+		When I select checking as the source account
+	explicit -> uses double quotes to hint something might be an argument (can reuse step definition more easily), cucumber will be more helpful in creating step definition by suggesting capture groups for you
+		When I select "checking" as the source account
+
+Hooks
+	Perform common operators before and after each scenario
+	Before -> executed before every scenario
+	After -> executed after every secnario
+	AfterStep -> executed after every step
+		
+		Before do
+			puts "This will run before each scenario"
+		end
+
+	Recommend configuring hooks in features/support/hooks.rb
+	Hooks are run in the order they are definied
+	Can use tagged hooks to run certain hooks for each scenario
+		Before ("@tag1, ~@tag3", "@tag2") do
+			puts "This will run before each scenario tagged with @tag1 or not "tag3 AND @tag2 
+		end
+
+Background
+	Hooks are only visible to people who understand ruby code so cannot be read by nontechnical people
+	If you need non techinical people to understand the setup then use background
+	Write steps that will be invoked before every scenario in a given feature
+		use instead of before hooks so step can be visible in the features file
+			create a logical context for each scenario
+	Define common steps e.g. Given steps, in a background that is run before each scenario
+
+		Feature: invite friends
+
+		Background: Logged inBackground: Logged in
+			Given I am logged in as "Aslak"
+			And the following people exist:
+				| name | friend? |
+				| David | yes |
+				| Vidkun | no |
+
+		Scenario: Invite someone who is already a friend
+		
+		Scenario: Invite someone who is not a friend
+		
+		Scenario: Invite someone who doesn't have an account
+
+	Choose either background or a hook depending on if you want to be explicit about the common setup in the feature or not
+
+Multiline text
+	RSpec reads text files
+	Allows you to represent input and output data almost exactly as it would appear in a file
+
+	E.g. Given and And (Then) steps each take a multiline strings as their argumetns using """
+
+
+		Scenario: pending implementation
+			Given a file named "example_without_block_spec.rb" with:
+				"""
+				describe "an example" do
+					it "has not yet been implemented"
+				end
+				"""
+
+			When I run "spec example_without_block_spec.rb"
+			Then the exit code should be 0
+			And the stdout should include
+				"""
+				Pending:
+
+				an example has not yet been implemented \(Not Yet Implemented\)
+				.\/example_without_block_spec.rb:2
+
+				Finished in ([\d\.]*) seconds
+
+				1 example, 0 failures, 1 pending
+				"""
+
+	Regular expressions provided do not need to caputre the multiline text
+			
+			Given /^a file named "([^\"]*)" with:$/ do |filename, text|
+				# ...
+			end
+
+			Then /^the stdout should include$/ do |text|
+				# ...
+			end
+
+	Cucumber delivers the text to the step definition as the last block argumnet
+		filename block argument contains value of the regular expression capture group (filename)
+		text variable holds the multiline text
+
+Tables in steps
+	Wiki-style table format well suited for Given and Then steps
+	A | at the beginning of a line following the step definition
+		Stores cell values for that line and all subsequent lines beginning with |
+		Stored as an object in
+			Cucumber::Ast::Table
+			this exposes the data as an array of hashes via hashes() method
+				each hash in the array uses column headers in the first row as keys
+
+
+	E.g. 
+		Scenario: three of a kind beats two pair
+			Given a hand with the following cards:
+				| rank | suit |
+				| 2    | H    |
+				| 2    | S    |
+				| 2    | C    |
+				| 4    | D    |
+				| A    | H 	  |
+
+
+		[
+			{ :rank => '2', :suit => 'H' },
+			{ :rank => '2', :suit => 'S' },
+			{ :rank => '4', :suit => 'C' },
+			{ :rank => '4', :suit => 'D' },
+			{ :rank => 'A', :suit => 'H' }
+		]
+
+	Cucumber delivers Cucumber::Ast::Table to the block as the last block argument in the step definition
+
+		Given /^a hand with the following cards:$/ do |cards_table|
+			hands << Hand.new do |hand|
+				cards_table.hashes.each {|hash| hand << Card.new(hash)}
+			end
+		end
+
+	Setp definition guides us to write the initalize method on Card such that it can set its internal state from a hash with the keys :rank and :suit
+
+Scenario outlines
+	Ues in cases that involve several similar cases
+	When secnarios start to repeat similar Given, When, Then
+	Scenarios and Examples keywords are supported by cucumber in term sof assigning tabular data to a scenario outline to create individual scenarios
+
+	Scenario Outline: submit guess
+		Given the secret code is "<code>"
+		When I guess "<guess>"
+		Then the mark should be "<mark>"
+
+	Scenarios: all numbers correct
+		| code | guess | mark |
+		| 1234 | 1234 | ++++ |
+		| 1234 | 1243 | ++-- |
+		| 1234 | 1423 | +--- |
+		| 1234 | 4321 | ---- |
+
+	Can also take multiline text with a tabular input to generate indivdual scenarios from scenario outline and scenarios keywords
+
+	Scenario Outline:
+		Given a discount of <discount>
+		When I order the following book:
+		| title | price |
+		| Healthy eating for programmers | <price> |
+	Then the statement should read:
+		"""
+		Statement for David
+		Total due: <total>
+		"""
+		Scenarios:
+		| discount | price | total |
+		| 10% | $29.99 | $26.99 |
+		| 15% | $29.99 | $25.49 |
+
+Configuration
+	cucumber.yml
+	config/cucumber.yml
+	Use this file to set upp adefualt configuration for when you run cucumber comman
+	define a profile in this file to allow you to run cucumber with a certain profile
+		@wip for work in progress tag
+			wip: --tags @wip features
+
+	cucumber -p wip  will run cucumber with the wip profile
+	can define multiple profiles in this file
+
+
+
+	
 
 
 
