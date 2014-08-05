@@ -1,0 +1,38 @@
+SOLID
+
+Single responsibility principle
+	class should have one repsonsiblity
+ 
+Open-closed principle
+	Classes & other design modules should be
+		open for extension
+		closed for modification
+
+Liskov Substition Principle
+
+Interface segragation principle
+	lean modules
+
+Dependency
+	high level modules should not depend on low level modules they should depend on abstractions
+	abstract things shoul dnot depend upoon their details
+
+The decorator pattern
+	
+Gem
+	library of classes eg rspec, sinatra
+	bundler is a gem
+	gem install
+
+Gemfile -> list of your dependencies visible to every potential interested party
+	create in root of project to store all gems your project depends on
+
+	Gemfile
+		source "https://rubygems.org"
+		gem 'sinatra'
+		gem 'rspec'
+
+This will autorequire these gems
+
+
+Giving what we can

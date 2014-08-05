@@ -1,0 +1,76 @@
+Database and Capybara
+
+Project - build a bookmark manager
+
+Capybara
+	- We used capybara with cucumber
+	- DSL to interact with webpages
+		visit
+		click on
+		fill in
+	- flavour of same type of testing but with rspec and capybara
+	- if you don't want to interact with customers don't need cucumber!
+	- writing tests in rspec with capybara is closer to code so some people read code better than text
+	- can then go and translate the rspec steps into cucumber steps for bonus points
+
+Database
+	- Store data in a table with rows and columns
+	- 
+
+
+Relational Database
+	- stores information about data and how it is related
+	- can create relationships between the data
+
+	- Games
+		has an ID to recognize a particular game
+	- Players
+		ID
+		name
+	- Need a join table: Games Players
+		- ID
+		- Game-ID
+		- Player-ID
+	- Every table has an ID
+
+Why we use IDs
+	- Database is optimized for speed and storage
+		very efficent way of storing data
+		easily searchable and indexable
+	- Speeds up access to data
+
+Database storage of information
+	- CLOB- character large object
+	- VARCHAR (255) - variable character length of max 255 characters. more efficient as knows the max length to expect
+
+Mongol - non relationonal database
+	uses hashes that are superunique not numbers to store data, prevents ID repetition!
+
+Talking to a database
+	always going to be a moment when data gets corrupted and need to connect to database to figure out why the program is not working
+
+
+SQL
+- structured query langauge
+- language used to create queries to talk to the database
+CRUD
+create, read, update, delete
+
+
+data mapper
+	middle man between url and database
+
+
+qsl
+\l 					lists all the databases
+\c ddatabase name    connect to a database
+\dt					display tables
+
+select * from links;
+
+
+
+
+
+
+

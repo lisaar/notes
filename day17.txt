@@ -1,0 +1,45 @@
+Model
+	Classes that represent an entity in your system
+		something relevant enough
+		usually linked to a database (haven't learnt this yet)
+	What are unchanging things in the system that will never lose its identity -> can transform but is still itself
+		ship
+		player
+		cell
+	which parts are transient, which parts are constant
+	the way you code battleships depends on how you write the model
+		which are the fixed entitites
+			e.g. board ships players
+
+Board
+	hash with key for each position
+		ships contained in cells
+	board with ships, ships have coordinates
+		ship can know what coordinates it has
+			when someone shoots at a coordinate the board can check if any of its ships are there
+			if no ships reply then that is water
+				but ship only exists when it is shot
+
+There is always a lump of complexity
+	ships gain an internal complexity
+	with a hash or an array of an array the creation of the grid becomes more complex, but shooting at things become easier
+
+SOLID
+
+master branch and devleopment branch
+	put all in development
+	then merge down to master
+	keeps master commits clean
+
+ 
+ Ways to design your software
+
+Kent Beck - four elements of simple design
+1. passes all the tests
+2. minimizes duplication
+3. maximises clarity -> naming
+4. has fewer elements
+
+
+
+

@@ -1,0 +1,23 @@
+Cunningham - architect
+Kent Beck - developer inspired by Cunnigham using patterns
+
+
+Design patterns in ruby
+	e.g. Decorator pattern
+	e.g. template pattern -> method acts a template with one moving part
+
+Use to make coding more easy
+
+API
+	application programming interface
+	specifies how some software components interact with each other
+		e.g. code with rspec
+	developer.github.com/libraries
+		ruby
+		then make a folder and clone into it
+
+		gem install github_api
+
+	security
+		is the external service protected?
+		OAuth

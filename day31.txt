@@ -1,0 +1,196 @@
+Javascript
+General purpose programming languge
+	use on browser, server, microwave, raspberry pi
+
+at least two computers in the equation when we interact with a website
+	client - have to use javascript, linguafranca to link backend to the server
+	
+	server
+		
+
+Javascript advantages on clinet
+		quicker to run code on client, request repsonse cycle is quicker
+			animations
+			reloading parts of the page
+			use javascript interactivity
+		cheaper power, cooling, space offloaded from server side
+		
+Wouldn't trust javascrpt for security on the client side need to do validation and authentication on server side
+Don't want to slow user comp down if computations are complex
+
+browser is easiest place ot run javascript code
+	tests
+	play environment chrome
+		alt command i
+
+		.js files
+		file://users/alex/Documents/rps/javascript/SpecRunner.html
+		run the specrunne file to run the tests
+
+function keyword
+	class	repalces class keyword
+	def 	replace method definition with propotype
+	block (repalces do and)
+
+variables are global when defined normally
+	use var variablename in first place to ensur they are not global variables
+
+	this.varname for instance variables
+
+javascript does not have implicit return
+	need to tell it that you actually want to eturn somethign from this method
+	use return
+end
+
+no symbols everything is a string
+
+semicolons
+	put at end of statement i.e. normal line of code terminate with semicolon
+	browser does it for you sometimes
+
+look at console if there are errors that are enmasse
+
+
+class Game
+
+	PAIRS = {
+		rock: { beats: :scissors },
+		paper: { beats: :rock},
+		scissors: {beats: :paper}
+	}.freeze
+
+	def initalize (player1, player2)
+		@player1, @player2 = player1, player2
+	end
+
+	def winner
+		return nil if same_pick?
+
+		if PAIRS[@player1.pick][:beats] == @player2.pick 
+			@player1
+		else
+			@player2
+		end
+	end
+
+
+	private
+
+	def same_pick?
+		@player1.pick == @player2.pick
+	end
+
+
+end
+
+
+class Player
+	attr_reader :pick, :name
+
+	def intialize(name)
+		@name = name
+	end
+
+
+	def picks(pick)
+		@pick = pick
+	end
+end
+
+
+
+
+it 'should return nil if its a draw' do
+
+	draw_game_results = [:rock, :paper, :scissors].map do |x|
+		player1.picks x and player2.picks x
+		game.winner
+	end
+
+	expect(draw_game_results).to equ [nil, nil, nil]
+
+end
+
+
+JAVASCRIPT
+
+
+describe("Rock-Paper-Scissors", function() {
+
+	var player1, player2, game;
+	
+	beforeEach(function() {
+
+		player1 = new Player('Alex');
+		player2 = new Player('Bob');
+		game = new Game(player1, player2);
+
+});
+
+describe('wining and losing', function() {
+
+	describe('rock', function() {
+
+
+		it('should beat scissors', function(){
+			player1.picks('rock')
+			player2.picks('scissors')
+			expect(game.winner()).toBe(player1);
+		})
+
+	})
+	
+
+});
+
+
+class Game
+
+	PAIRS = {
+		rock: { beats: :scissors },
+		paper: { beats: :rock},
+		scissors: {beats: :paper}
+	}.freeze
+
+	def initalize (player1, player2)
+		@player1, @player2 = player1, player2
+	end
+
+	def winner
+		return nil if same_pick?
+
+		if PAIRS[@player1.pick][:beats] == @player2.pick 
+			@player1
+		else
+			@player2
+		end
+	end
+
+
+	private
+
+	def same_pick?
+		@player1.pick == @player2.pick
+	end
+
+
+end
+
+
+function Player(name) {
+	this.name = name;
+}
+
+Player.prototypes.picks = function(pick){
+	this.pick = pick;
+};
+
+function Game(player1, player2) {
+	this.player1 = player1;
+	this.player2 = player2;
+}
+
+Game.prototype.winner = function(){	
+	return this.player1;
+};
+	

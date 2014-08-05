@@ -1,0 +1,103 @@
+ruby uses SQl to interact with database
+
+databse
+	columns and rows
+
+Link in terms of database
+	it is a row inside a table
+		ID Title URI Description
+In ruby a link is an object
+	this object has atrributes
+
+
+Tabular data vs objects
+	TWO DIFFERENT THINGS
+
+select from SQL -> Structured query language
+	returns rows and columns
+	NOT objects
+
+
+Create tools that are capable of translating ruby object into database SQL
+
+Object Relational Mapping!	
+	translation of object into SQL
+	Data Mapper is an ORM
+
+	a link object creates a links table
+
+
+Pattern
+	Active record pattern
+
+
+Data mapper methods
+
+	Link.all
+		data mapper interernalls does
+			SELECT * FROM LInKS
+			factory method
+			builder method
+			interpreter method
+	Link.create
+	Link.update
+	Link.get(12)
+		sql 
+			SELECT ID FROM LINKS WHERE ID = 12,
+
+Data mapper does the mapping for you so you don't need to write complex sql
+
+
+	Link.get(12).tags
+
+
+data_mapper_setup.rb
+
+DataMapper:;Logger.new(STD, :debug)
+	on datamapper.org
+
+
+
+Validations
+	Applying a set of rules to user input to make sure its correct
+	- confirmation
+	- format
+	- length
+
+Data mapper has validations built into it
+	
+Feature test
+	test the user experience from the point of view of the user
+	not the database as a whole or sessions etc
+	through the eyes of the user
+
+	slower than unit tests
+
+data mapper has a list of available vaildations
+
+rubular
+	write regexp
+
+.create - 2 steps
+	.new
+	.save
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

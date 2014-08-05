@@ -1,0 +1,24 @@
+London style
+	can move far faster in the coding
+	think how you want it to be without it being that way
+	everything gets wired up in the end
+
+Boris bikes recode
+
+Today's challenge
+- code airport control
+- lets airplanes land or not land on runways
+- allows planes to land and take off
+- element of difficulty
+- planes can only land or take off if weather is good
+- can't land or take off if weather is bad
+- need to code random weather
+- how do we test a random element? how to test for randomness
+- link to a git repo with a skeleton of some specs
+     can write far more specs than those!
+     skeleton to show you the bare minimum that needs to be tested
+
+Classes
+airport
+planes
+weather

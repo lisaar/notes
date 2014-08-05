@@ -1,0 +1,130 @@
+
+- if you know a pattern you can more quickly get passed that problem and deal with the problem unique to that situation
+
+Builder pattern
+1. helps you to configure complex objects
+	e.g. a computer
+		Display - LCD or CRT 
+		Drives - hardrive, cd drive, dvd drive
+		Motherboard - CPU/turbo CPU, memory
+- code for computer
+	class Motherboard
+	class Drive
+	class Display
+
+
+memory gardrive, cd writer, dvd drive
+	Motherboard.new(TurboCPU)
+	drives = []
+	drives << Drive.new(:hardrive, 20000, true)
+
+jermeyscomputer = Computer.new(:lcd, motherboard, drives)
+
+create a builder class
+	class ComputerBuilder
+
+	builder = ComputerBuilder.new
+		gives defulat display
+		no drives
+		basic motherboard
+
+	builder.turbo
+		creates turbo CPU
+
+
+	add a CD drive
+		builder.add_cd
+
+	builder.add_dvd_driver
+	builder.add_hard_disk
+
+	mycomputer = builder.computer
+
+- only do it if you are making a lot of objects
+- you factor out each of the variables in initalize into separate methods
+
+Adapter pattern
+- have client who wants to connect to target
+	target has very different interface so within target there is an adapter which allows the client to connect to the interface
+	-the adaptee in the adapter does the work
+
+create an adapter class
+	
+	AmericanTextObjectAdapter <  TextObject
+		def initialize(ato)
+		@ato = ato
+
+		string
+			return @ato.text
+		size_mm
+			return @ato.size_inches
+		end
+
+
+	require ;american)text_object
+
+
+	AmericanTextObject
+	colour
+		receive color
+
+
+	string 
+		receive text
+
+	size_mm
+		size_inchines
+
+
+	ato AmericanTextObject.param('hello', 5.8, :blue
+
+	<<ato
+		colour
+		color
+
+		string
+		text
+
+	def ato.colour
+		color
+	end
+
+	def ato.string
+		text
+	end
+
+
+Adapters used when interfaces don't match up
+
+modification is more simple than creating an adaptor
+	can just modify one instance
+
+
+
+Visitor pattern
+	create a tree
+		no superclass but can get the same thing and copy it 
+
+	there is one visitor
+		initial object
+			concrete visitor(s)
+
+
+	def coffee
+		@price :price
+	end
+
+	def initalize(price)
+		@price = price
+	end
+
+
+	def accept(visitor)
+		visitor.visit(self)
+	end
+
+	class Mocha
+		def initialize(rate)
+			@rate =rate 100
+		end
+	end

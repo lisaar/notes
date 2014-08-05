@@ -1,0 +1,12 @@
+Associations
+	many to many relationships
+	students table
+		ID name
+	clases table
+		ID name
+	join-table onnection between student and classes
+		classes_students
+			has 2 forgein keys
+			Class_ID	Student_ID
+		simple join table with no extra info doesnt have to have its own ID, it it is a class in its own right then you need to add an ID
+Debugging

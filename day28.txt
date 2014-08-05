@@ -1,0 +1,47 @@
+Security
+	- encryption
+	- managing access writes
+		passwords
+
+Encrypt a password
+	- Cesar cipher
+	- form of hashing
+		string.hash
+	- MD5
+		bigger pool
+		but still can get a hash collision
+		can only go one way no way to backtrace
+	- generate a salt
+		changes the flavour of the password
+		salt randomly generates a string
+		it is added to the end of the password
+		saved in the databse
+	password + salt
+	- rainbow table
+		combination of every single password that's ever been recorded
+		5terabytes
+		buy every single combination of password, and just loop through
+		Block out after 5 attempts
+	MD5 very fast but not very secure....
+
+Bcrypt
+	better than MD5
+	Very slow, 100 times slower
+	Becomes not worth it to use a rainbow table as its just too slow
+	Incomputationally inefficent to use this, with resources provided
+
+
+don't ever attempt to write your own password algorigthm
+
+Scrypt
+
+
+Github uses SHH keys
+
+
+Associations
+
+- use can have more than one post
+- but one post can only belong to one user
+- one to many relationship
+

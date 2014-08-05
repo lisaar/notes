@@ -1,0 +1,74 @@
+Battleships
+
+4 versions
+version 0 -> finished today
+version 1 -> tomorrow evening
+version 2 -> wednesday
+version 3 -> thursday
+play on friday
+
+
+Agile software development
+- iterative combined with high level development
+- individuals and interactions over processes and tools
+- working software over comprehensive documentation
+- customer colaboration over contract negotiation
+- responding to change over following a plan
+
+Ken beck
+- extreme programming is like a stool with 3 pillars
+	values
+	principles
+	practices
+
+Values
+- feedback e.g. pair programming gives constant feedback
+- courage
+- respect
+
+Principles
+- humanity
+- mutual benefit
+- self similarity
+- diversity
+- reflection
+- flow
+- oportunity
+- redundancy
+- failure
+- quality
+- baby steps
+- accepted repsonsiblity
+
+Practices
+- planning
+	user stories: conversation with customer
+	release planning
+		estimate stories
+		prioritse stories
+		select release dates
+		select iteration length
+		estimate velocity
+	iteration planning
+		one hr at start of the week
+		defer commitment ot he last possible moment
+		never commit early unless u know why
+	- execute
+		stand up meeting
+			around user stories
+			15min online scrums with agile ventures
+		TDD
+			emergent design
+		continous integration of software
+			live deployment with staging
+			knows software is ready to work
+			amazon deploys to live with a new version every 11 secs
+		collective code ownership
+		informative workspaces
+			stickers etc.
+		energised work
+	- closing the project
+		demo
+		retrospective
+		celebrate
+

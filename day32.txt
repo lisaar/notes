@@ -1,0 +1,94 @@
+javascript is impatient by nature. ruby is not...
+
+victory message
+	nested hash
+
+HTML and CSS interface
+	index.html in style
+
+	indicate to the user with hover effect
+	opacity - transpaprency
+
+javascript not very good for manipulating HTML
+	browser differences
+	popular libraries to mainuplate HTML 
+	need javascript to change HTML on page to make it go from one state to another
+
+jquery
+	very ubiquitous javascript library
+	code someone else wrote to make our javascript code do things
+	very good for cross-browser compatability
+
+can link directly to the hosted version of code.jquery.com
+	have to be on line when we are devleping and we don't control those servers
+	or download a copy of the file into lib directory and link to that
+
+uncompressed and minified versions
+
+
+
+user events in jquery
+
+
+jQuery('h1')
+	grabs the h1 html element or use $
+
+boiler plate code for the basic event handler in index.html
+	$(document).ready(function(){
+
+		var p1 = new Player('Alex');
+		var p2 - new Player('Lisa');
+		var game - new Game(p1, p2);
+
+		jQuery('.choices img').on('click', function(){
+
+			
+
+			p1.picks($(this).data('pick'));
+			p2.picks('rock');
+		
+
+			$('#result').prepend('<li>' + game.winningMessage() + '</li>');
+
+
+			$('<li>' + game.winningMessage() + '</li>').prependTo('#results').slideDown();
+
+
+
+			$("#results li:gt(4)").fadeOut().remove();
+
+		})
+	})
+
+	ensures HTML has laoded and is ready to be moulded. use with jquery script
+
+	event types
+	mouse over, submit, click
+
+
+avoid introducing tied-coupling between appearance and behaviour
+
+data attributes
+	data-
+
+	data-pick='rock'
+
+
+console.log('this')
+
+integration tests
+	do this with capybara
+
+
+append
+prepend
+
+api.jquery.com
+
+
+
+
+
+
+
+

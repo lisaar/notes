@@ -1,0 +1,133 @@
+launchy - debugging
+	want to see what cucumber sees use launchy
+shotgun - automatic loading of a page
+	don't have to reboot the server each time
+capaybara - plugin for cucumber and rspec at same time
+	used to integrate rspec and cucumber with web features
+	buttons, fillin in forms
+
+Sinatra
+	framework
+	gem
+	program
+	takes ruby code and HTML code to render pure HTML code
+
+
+	classic -> define endpoints as you go
+	modular -> subclass sinatra
+
+	gem install thin
+		handles communications with clients
+
+	create server.rb file
+
+	terminal put ruby server.rb 4567
+		can also specifiy a port
+
+	http://localhost:4567
+
+
+bundle install -> installs gems from Gemfile
+
+
+server.rb
+
+	require 'siantra'
+
+	get '/' do
+		"Hello"
+	end
+
+	get '/' do
+		erb :index  #erb files allows mixed ruby and HTML code
+	end
+
+
+	by default sinatra looks in views folder for index.erb
+Ruby rails
+	also renders HTML code from ruby
+
+
+
+
+
+
+Sinatara
+	rackup -> 
+		browser all the way into sinatra
+		sinatra out back into browser
+		the rack choses the port
+			browser-->
+				network adapter
+				rack
+				sinatra
+				app
+	rack is a framework to be able to build web applications
+
+
+Cucumber
+	bridges gap with users
+	Gherkin - syntax lexer
+
+Capybara
+	driver that allows cucumber to interact with a web application
+	has methods to go to serve url
+		visit
+		path_to(page_name)
+
+
+cucumber sinatra
+	comes with an array of different step definitions you can use
+
+launchy
+	and show me the link
+	creates capaybara files
+	cucmber looks for you...
+
+
+<a href="">NewGame</a>
+
+sinatra by default looks from where the app is running downwawrds
+	set :view, Proc.new {File.join(root, "..", 'views')}
+
+
+views/index.erb
+	<a href= 'new_game'>New Game</a>
+
+
+Descripyive
+	Given I want to play battleships
+	When I register for a new game
+	Then I should be told to wait for the next player
+
+use capaybara on github
+
+	registration_steps.rb
+
+	Given
+		visit '/'
+	end
+
+	When
+		click_on 'New game'
+		fill_in name , with: Enrique
+		click_on 'Play!'
+
+	end
+
+	Then
+		expect(page).to have_content "Let's wait for second player"
+	end
+
+
+
+
+
+
+
+
+
+
+
+
+

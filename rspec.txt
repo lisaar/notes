@@ -239,9 +239,9 @@ Customer Acceptance Tests
 	Take it one iteration at a time 
 		try to finish a story then add any new features that have emerged through dicussion
 
-Geherkin
+Gherkin
 	Interpreter that executes code in .feature files
-	Can probide language headers (cucumber --i18n help to see available languages)
+	Can provide language headers (cucumber --i18n help to see available languages)
 		#language: en
 		Feature: Addition
 Grammar - key words in gherkin
@@ -275,7 +275,7 @@ Keywords indicating steps in scenarios - use to build up domain specific languag
 	Defined steps
 	Given
 		indidactes something we accept to be true in a scenario
-		probides context for the events and outcomes
+		provides context for the events and outcomes
 		not the same as preconditions as you can define a given that should realistically never be obtained i.e. given the world is flat
 	When
 		indicates the event in a scenario

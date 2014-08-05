@@ -1,0 +1,201 @@
+browser, tablet, mobile
+	mobile - 1 thumb 1 eye
+	responsive design
+
+
+HTML - structure!!!!!!
+- head
+- body
+
+<html>
+	<head>
+		meta information 
+			relevant to the particular doc
+			nothing to do with the content
+			e.g. title of doc, author, keywords, references to things doc needs e.g. javascript and CSS files
+
+		<title>My first website</title>
+	</head>
+
+	<body>
+		<div>
+
+
+		</div>
+
+		<span>
+
+
+
+		</span>
+
+	</body>
+</html>
+
+index.html
+
+in terminal
+	open index.html
+
+h1-h6
+p
+lists -> ul ol
+div -> html element with no semantic meaning. block element
+	puts text on new line, throws it under
+span -> html element with no semantic meaning. not a block
+	doesn't break content
+
+
+previous versions of html didn't have sufficent elements to do the functions of indents and new lines
+	div breaks content
+	span gives in line
+
+
+BUT
+	HTML should be the structure and not how the document looks like!
+	CSS is used to say how document looked
+
+
+<strong>  are the structural equivalents of <b>
+<em>										<i>
+
+	<strong>hello</strong>
+	<em>hello</em>
+
+<table>  BEAWARE!
+
+HTML5
+	if a browser can't understand an element it treats it as a span/div
+
+
+bbc.co.uk
+	<header>
+		<nav>
+		</nav>
+		<nav>
+		</nav>
+	</header>
+	<body>
+		<section>
+			<article>
+				<header>
+					
+					<h1>
+					</h1>
+
+
+				</header>
+
+
+			</article>
+			<aside>
+				<section>
+				</section>
+				<section>
+				</section>
+			</aside>
+			<article>
+			</article>
+			<footer>
+			</footer>
+		</section>
+		<footer>
+		</footer>
+	</body>
+
+
+
+
+
+Use CSS to format and HTML to define layout
+img src=
+
+HTTP
+	fabric of the internet
+
+How does the internet work
+	URL
+	IP
+	DNS
+	1. TCP/IP protocol is based on IP and allows two computers to communicate by sending data across a network. (transmission control protocol)
+	2. HTTP is build on top of TCP/IP. It uses TCP/IP in order to work.
+	3. HTTP hypertext transport protocol
+		transport hypertext
+		hypertext - is text which is linked with other pieces of text (via hyperlinks)
+		helps transport text from one machines to another
+	4. http://google.co.uk/images
+		URI - uniform resource identifier
+			address
+				postcode
+				door number
+		URL uniform resource locator (different to a URI)
+			http://google.co.uk/  URL 
+				protocol + port number with default :80 + toplevel domain
+			images 				  URN
+URI is just a name composed of URL and URN
+
+Top level domain  google.co.uk
+	points to a (or several) machine(s)
+	IP address -> group of  4 numbers seperated from dots 0-255 representing a unique address to a machine
+		it identifies a machine
+		you can name the IP address using DNS
+
+DNS - domain name system
+	asks the IP address of google.co.uk
+	keeps asking computers until it finds one that has the IP address
+	finds its way to where it needs to go
+
+Once reach the server
+	URL helps us to reach the machine
+	then program stands at the door of the computer
+	there is an implicit :80 -> the default port number for HTTP
+	arrived at port :80 and enter the machine
+	tells them using http and i want to get the resource with this URN name
+
+TLD finds, connects via port, requests resoure at URN name.
+	using HTTP1.1
+	machine returns content of website
+
+Machine 1 says GET/HTTP1.1 to  server(machine 2)
+	method of HTTP
+	post request posts data to server when you login
+	browsers only understand get and post methods
+	not put, delete, options, head, patch
+Machine 2 (server) replies with response
+	header - contains info about the request to shw its responding ,time, what kind of server i am, byte length of the body
+		status code - tells browser if everything went well or not
+			404 error not found
+			200 ok (can proceed to body)
+			1xx series is informative information
+			2xx successful
+			3xx	redirections e.g. 304 resource has changed its location, with request to new location to give to browser
+			4xx declined errors
+			5xx internal server errors
+	body - content. the actual HTML -> the visual
+		broswer takes string, parses it, interprets it, and displays it in nice way
+			parse - resolve
+			browser resloves string into a visual
+
+if you know an IP address you don't need a DNS
+	can connect direct, don't need address translation
+
+
+traceroute
+ifconfig
+
+
+Web Battleships Need
+	board
+	players
+	ships
+	don't need the grid....
+
+
+
+
+HTML
+Sinatra
+Cucumber
+Canjbara
+CSS
+Heroku - bring app live to internet

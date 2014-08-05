@@ -1,0 +1,63 @@
+self
+
+class C
+	def say
+		puts "self is #{self}"
+	end
+end
+
+can then call C.say in irb to find out what self is
+	here self is the class C object if you've called C.new.say
+		
+
+class Ship
+	def initialize(length)
+		@length = length
+	end
+end
+
+submarine = Ship.new(3)
+
+class Submarine < Shiop
+	def initialize
+		super(3)
+	end
+end
+
+include ClassName allows a class to inherit from the class
+
+
+call object.superclass   to know what is the parent class
+	object.ancestors
+
+Object.methods.count   
+
+superclass (ancestors) give new objects a default initialize method until you rewrite it
+
+SELF
+
+new is a class method. lives under class. Van doesn't exist until new is called
+
+
+call this on a class
+	def self.large
+		new(6)
+		
+	end
+
+Regular expression
+	run reg ex on a website to get live prices
+	pattern, string, characters
+	rubular.com
+	email address is words @ . etc. -> there is an offical reg exp for what can be an email address
+
+.+?@.+?$
+
+. -> and character
+
+	e.g. can test something is submitted in the correct format of an email address
+  p hello.match(/l/)
+
+
+
+

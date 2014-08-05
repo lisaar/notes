@@ -1,0 +1,175 @@
+CSS
+styling
+
+<a href = '#'> 
+
+CSS Zen Garden
+	1 html page with lots of different CSS files that can interact with html to change display of hte page
+
+Bad practice to put CSS directly into the html page using a style tag.
+
+	<style>
+		/*CSS here */
+	</style>
+
+
+Better to load a seperate CSS file into the html page
+Put in style under head
+
+<style> 
+	a {
+	
+	}
+</style
+
+<style>
+	#home {							or .home to target the home class
+	color: orange;
+	}
+</style>
+
+<body>
+	<a class='home' href='#'>Home</a>
+	<a class='home' href='#'>About</a>
+
+</body>
+
+ID -> unique, only 1 ID per element
+class -> not unique, multiple per element possible
+
+
+
+------
+
+	<head>
+		<style>
+			body {
+				font-family: 'Hevetica';
+				font-size: 18px;
+			}
+
+			article {
+				width: 800px;
+				margin: 0 auto;
+				
+			}
+
+			header {
+				width: 800px;
+				margin: 0 auto;
+
+			}
+
+			img {
+				max-width: 100%;        can't be mor ethan 880px page width
+			}
+			h1 {
+				font-size: 30px
+				background: black;
+				colour: white;
+
+
+			}
+				
+			a {								link
+				color: #f77;				hex code
+				text-decoration:none
+			}
+
+			nav a { 							will only look inside nav elements
+				color: #f77;				hex code
+				font-size: 30px;
+				text-decoration: none;
+				padding: 5px;
+											
+			}
+			nav a: hover {
+				colour: #e33;
+				background: grey;
+			}
+
+			article a {
+				colour: green;
+				font-weight: bold;
+			}
+
+			.important {
+				colour: purple;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<h1 style ="
+			margin: 30px;						margin: 10px 20px;  T/B L/R 
+														4 no. T/R/B/L
+			padding: 30px;						same for padding
+			border: solid 3px red;
+			">darwin was right...dogs really dog et jealous</h1>
+
+		<article>
+		<p> "In" <a href='#' class="important">The Descendetn of Man</a>
+		"sdfasdfdsafasddscdscdscsvc xc cxvsd"
+
+		</p>
+		</article>
+
+
+	</body>
+
+Chrome inspect element
+	allows you to play around with CSS
+	shows you visual representation of elements
+	can show what it would like like if you altered element
+
+Margins and padding
+	padding -> spacing inside an element
+	margin -> spacing outside (around) an element
+
+
+CSS reference
+	400 things developer.mozzila.org/en-US/docs/Web/CSS/Reference
+
+
+Rules for working out what styles are applied in CSS
+	General rule
+		specificity
+		how specific a rule is
+		it will apply the most specific rules first
+			e.g. .important class is most specific
+
+
+Bootstrap
+	CSS framework for twitter
+	take it and overwrite it
+
+Put this in head with your css style sheet
+<link href = "style.css" rel='stylesheet'>
+
+Heroku
+
+	deploy an application
+
+Terminal
+	heroku login
+		enter credetials
+	
+	heroku create
+	git push heroku master
+	heroku open
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

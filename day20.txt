@@ -1,0 +1,55 @@
+terminal table git hub
+	gem install 'terminal-table'
+
+
+in pry require 'terminal-table'
+require './lib/board'
+
+board = Board.new
+
+board.grid.values.first
+display = board.grid.values.map{|cell| cell.content.class.name}.each_slice(10).to_a
+
+
+gives an array of 10 arrays giving water
+
+table = Terminal::Table.new :rows => display
+
+	shows you what the terminal table gem is doing
+
+puts table
+
+	gives table
+
+
+indexed_rows = []
+contents.each_with_index do |row, index|
+	indexed_rows << [index+1] + row
+end
+
+
+=========
+
+Re-write inject for the array class
+	needs to be test driven
+	don't call it inject....
+	when you reopen array class call it something else
+	but rename it to test it
+
+Write a program for a takeaway company
+	input menu
+	input dishes
+	make an order
+	calculates price
+	sends customer an SMS => needs to actually arrive
+		order is going to arrive in x amount of time
+		use an API
+
+
+Bonus
+	attr_reader :name
+		let's you get the name from a class @name instance variable
+	attr_writer :name
+		let's you write the name to the class, assign a new value to @name
+	attr_accessor :name
+		write this  method....

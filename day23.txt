@@ -1,0 +1,89 @@
+exquisite design pattern
+proxy design pattern
+
+
+Framework -> tells you where you have to go, e.g .rails
+Sinatra is not a framework. give you more freedom
+
+1. form parameters
+2. url parameters
+3. query string parameters
+
+server.rb
+	server file
+	parameters
+		user: Lisa
+			get send through with the post request
+			
+			get '/' do
+				erb :index
+			end
+
+			post '/form' do
+				@params = param s
+				params[:user]
+				ptus params
+				erb :params
+			end
+
+			get '/hello/:name/:surname' do |first, surname|
+				puts params
+				"hello" + first + " " + last
+				#"hello" + params[:name] + " " + params[:surname]
+			end
+
+
+			whatup?name=Stephen
+
+			get '/whatsup' do
+				#only works if ?name= Stpehen is on the end of the url
+				puts params
+				"whats up " + params[:name]
+			end
+
+			post '/form' do
+				@carrots = params[:user]
+				puts params
+				erb :params  #server.erb looks in params.erb
+			end
+
+
+views (folder)  use partials to render a form within a form
+	form.erb
+		<form name="input" #key becomes name action="/form method="post">
+			username: <input type="text" name="user">
+			<input type="submit" value="Submit">
+		</form?
+	index.erb
+		<%= erb :form %>
+			rendering a form inside the page (this form is form.erb)
+	layout.erb
+		<html>
+			<head>
+			<link rel='stylesheet' href='/stylesheetes/styles.css' type='text/css'>
+			</head>
+
+			<body>
+			<h1>HEllo</h1>
+
+			<%= yield %>        
+			</body>
+		</html>
+	params.erb
+		<%= @params %>
+
+
+	layout yields to index which then renders a form on the pagem
+
+
+
+public (folder)  VERY IMPORTANT TO MAKE THINGS ALWAYS AVAILABLE PUBLICLY
+	stylesheets (folder)
+
+
+		styles.css
+
+
+			body {
+				background-color: pink;
+			}
